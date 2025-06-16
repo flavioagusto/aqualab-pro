@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaLab Pro - Servicios Ambientales y Análisis de Laboratorio</title>
+    <meta name="description" content="Especialistas en análisis fisicoquímicos, tratamiento de aguas y cumplimiento normativo ambiental">
+    <meta name="keywords" content="laboratorio análisis agua, servicios ambientales Piura, análisis fisicoquímicos, tratamiento aguas residuales, OEFA, ANA, DIGESA, ISO 17025, monitoreo ambiental Perú">
+    <meta name="author" content="AquaLab Pro">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="AquaLab Pro - Servicios Ambientales de Excelencia">
+    <meta property="og:description" content="Especialistas en análisis fisicoquímicos, tratamiento de aguas y cumplimiento normativo ambiental en Piura, Perú">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tu-sitio.netlify.app">
+    <meta property="og:image" content="https://tu-sitio.netlify.app/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='2'%3E%3Cpath d='M9 2v5l-2 7h10l-2-7V2'/%3E%3Cpath d='M7 14h10v6a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-6z' fill='%2306b6d4' fill-opacity='0.2'/%3E%3Cline x1='9' y1='2' x2='15' y2='2'/%3E%3C/svg%3E" type="image/svg+xml">
+    <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='2'%3E%3Cpath d='M9 2v5l-2 7h10l-2-7V2'/%3E%3Cpath d='M7 14h10v6a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-6z' fill='%2306b6d4' fill-opacity='0.2'/%3E%3Cline x1='9' y1='2' x2='15' y2='2'/%3E%3C/svg%3E" type="image/svg+xml">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/@tabler/icons@latest/icons-sprite.svg" rel="stylesheet">
+    <link href="./dist/output.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Dark Mode Script - Debe ejecutarse ANTES de que se renderice la página -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+            
+            console.log('🌗 Initial theme applied:', theme);
+        })();
+    </script>
+</head>
+<body class="antialiased">
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 glass-effect border-b border-border/50">
+        <nav class="container-responsive">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent text-primary-foreground">
+                        <i data-lucide="flask-conical" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-xl font-bold text-foreground">AquaLab Pro</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center justify-center flex-1">
+                    <div class="flex items-center space-x-8">
+                        <a href="#inicio" class="nav-link text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Inicio</a>
+                        <a href="#servicios" class="nav-link text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Servicios</a>
+                        <a href="#nosotros" class="nav-link text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Nosotros</a>
+                        <a href="#contacto" class="nav-link text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Contacto</a>
+                    </div>
+                </div>
+
+                <!-- Theme Toggle & Mobile Menu -->
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="flex items-center justify-center w-10 h-10 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors">
+                        <i data-lucide="sun" class="w-5 h-5"></i>
+                        <i data-lucide="moon" class="w-5 h-5 hidden"></i>
+                    </button>
+                    
+                    <button id="mobile-menu-toggle" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="md:hidden hidden border-t border-border/50 bg-background/95 backdrop-blur-sm">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="#inicio" class="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors">Inicio</a>
+                    <a href="#servicios" class="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors">Servicios</a>
+                    <a href="#nosotros" class="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors">Nosotros</a>
+                    <a href="#contacto" class="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-md transition-colors">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/10"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,oklch(var(--primary)/0.1),transparent_50%)]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,oklch(var(--accent)/0.1),transparent_50%)]"></div>
+
+        <!-- Floating Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="floating-element w-16 h-16 top-1/4 left-1/4 animate-float" style="animation-delay: 0s;">
+                <i data-lucide="microscope" class="w-8 h-8"></i>
+            </div>
+            <div class="floating-element w-20 h-20 top-1/3 right-1/4 animate-float" style="animation-delay: 1.5s;">
+                <i data-lucide="droplets" class="w-10 h-10"></i>
+            </div>
+            <div class="floating-element w-14 h-14 bottom-1/3 left-1/3 animate-float" style="animation-delay: 3s;">
+                <i data-lucide="leaf" class="w-7 h-7"></i>
+            </div>
+            <div class="floating-element w-18 h-18 bottom-1/4 right-1/3 animate-float" style="animation-delay: 4.5s;">
+                <i data-lucide="trending-up" class="w-9 h-9"></i>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="container-responsive relative z-10">
+            <div class="text-center max-w-5xl mx-auto px-4">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-foreground mb-8 animate-fade-in-up leading-tight">
+                    Servicios Ambientales de 
+                    <span class="text-gradient neon-glow">Excelencia</span>
+                </h1>
+                <p class="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto animate-fade-in-up leading-relaxed" style="animation-delay: 0.2s;">
+                    Especialistas en análisis fisicoquímicos, tratamiento de aguas y cumplimiento normativo ambiental
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in-up" style="animation-delay: 0.4s;">
+                    <a href="#servicios" class="btn-primary text-lg px-8 py-4 rounded-xl shadow-xl hover:scale-105 transform transition-all neon-glow">
+                        <i data-lucide="flask-conical" class="w-5 h-5 mr-2"></i>
+                        Nuestros Servicios
+                    </a>
+                    <a href="#contacto" class="btn-secondary text-lg px-8 py-4 rounded-xl shadow-lg hover:scale-105 transform transition-all">
+                        <i data-lucide="phone" class="w-5 h-5 mr-2"></i>
+                        Contáctanos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-20 bg-muted/30">
+        <div class="container-responsive">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                    Nuestros <span class="text-gradient">Servicios</span>
+                </h2>
+                <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                    Soluciones integrales para el análisis y gestión ambiental
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Análisis Fisicoquímicos y Microbiológicos -->
+                <div class="service-card group">
+                    <div class="flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-600/20 mb-6">
+                        <i data-lucide="flask-conical" class="w-8 h-8 text-cyan-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Análisis Fisicoquímicos y Microbiológicos</h3>
+                    <p class="text-muted-foreground mb-4">
+                        Servicio base y clave para el control de calidad de aguas, alimentos, efluentes y más.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Análisis de aguas (metales totales, metales disueltos y parámetros fisicoquímicos)
+                        </li>
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Control de calidad alimentaria
+                        </li>
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Análisis microbiológicos
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Otros Servicios -->
+                <div class="service-card group">
+                    <div class="flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-600/20 mb-6">
+                        <i data-lucide="droplets" class="w-8 h-8 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Tratamiento de Aguas Potables y Residuales</h3>
+                    <p class="text-muted-foreground mb-4">
+                        Muy demandado por industrias, municipalidades y proyectos sostenibles.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Plantas de tratamiento
+                        </li>
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Sistemas de purificación
+                        </li>
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Monitoreo continuo
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="service-card group">
+                    <div class="flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-600/20 mb-6">
+                        <i data-lucide="factory" class="w-8 h-8 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Tratamiento de Efluentes</h3>
+                    <p class="text-muted-foreground mb-4">
+                        Complemento técnico de alto valor para industrias que deben cumplir normativas.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Efluentes industriales
+                        </li>
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Cumplimiento normativo
+                        </li>
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Optimización de procesos
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="service-card group">
+                    <div class="flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-green-500/20 to-green-600/20 mb-6">
+                        <i data-lucide="clipboard-check" class="w-8 h-8 text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Monitoreo Ambiental y Cumplimiento Normativo</h3>
+                    <p class="text-muted-foreground mb-4">
+                        Esencial para clientes con fiscalización de OEFA, ANA, DIGESA, etc.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Cumplimiento OEFA
+                        </li>
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Normativa ANA
+                        </li>
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Regulaciones DIGESA
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="service-card group">
+                    <div class="flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-600/20 mb-6">
+                        <i data-lucide="sprout" class="w-8 h-8 text-amber-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Ensayos de Suelos</h3>
+                    <p class="text-muted-foreground mb-4">
+                        Requerido para construcción, minería y agricultura (sulfatos, cloruros, sales, etc).
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Análisis para construcción
+                        </li>
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Estudios mineros
+                        </li>
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Análisis agrícolas
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="service-card group">
+                    <div class="flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-teal-500/20 to-teal-600/20 mb-6">
+                        <i data-lucide="recycle" class="w-8 h-8 text-teal-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Gestión de Residuos</h3>
+                    <p class="text-muted-foreground mb-4">
+                        Servicio importante para el manejo integral de residuos industriales y comerciales.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Clasificación de residuos
+                        </li>
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Planes de manejo
+                        </li>
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Disposición final
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="service-card group">
+                    <div class="flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-600/20 mb-6">
+                        <i data-lucide="cpu" class="w-8 h-8 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Software especializado para laboratorios, plantas y automatización</h3>
+                    <p class="text-muted-foreground mb-4">
+                        Soluciones tecnológicas avanzadas para optimizar procesos en laboratorios y plantas industriales.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Automatización de procesos y reportes
+                        </li>
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Análisis de datos
+                        </li>
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Dashboard y monitoreo en tiempo real
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="service-card group col-span-1 md:col-span-2 lg:col-span-1">
+                    <div class="flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-rose-500/20 to-rose-600/20 mb-6">
+                        <i data-lucide="award" class="w-8 h-8 text-rose-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Gestión de Calidad (ISO 9001 / ISO 17025)</h3>
+                    <p class="text-muted-foreground mb-4">
+                        Competencia adicional y asesoría empresarial para sistemas de gestión.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Implementación ISO
+                        </li>
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Auditorías internas
+                        </li>
+                        <li class="flex items-center text-sm text-muted-foreground">
+                            <i data-lucide="check" class="w-4 h-4 mr-2 text-green-600"></i>
+                            Asesoría especializada
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="py-20">
+        <div class="container-responsive">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                    ¿Por qué elegirnos?
+                </h2>
+                <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+                    Con años de experiencia en el sector ambiental, ofrecemos servicios especializados que garantizan el cumplimiento normativo y la excelencia técnica.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="flex items-start space-x-4 p-6 rounded-xl bg-card border border-border">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-primary"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-foreground mb-2">Certificaciones Internacionales</h4>
+                        <p class="text-muted-foreground">Laboratorio certificado bajo normas ISO 17025 y ISO 9001</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start space-x-4 p-6 rounded-xl bg-card border border-border">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
+                        <i data-lucide="clock" class="w-6 h-6 text-primary"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-foreground mb-2">Respuesta Rápida</h4>
+                        <p class="text-muted-foreground">Resultados en tiempo récord sin comprometer la calidad</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start space-x-4 p-6 rounded-xl bg-card border border-border">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
+                        <i data-lucide="users" class="w-6 h-6 text-primary"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-foreground mb-2">Equipo Especializado</h4>
+                        <p class="text-muted-foreground">Profesionales con amplia experiencia en análisis ambiental</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-20 bg-muted/30">
+        <div class="container-responsive">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Contáctanos</h2>
+                <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                    Estamos aquí para ayudarte con tus necesidades ambientales
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <a href="https://www.google.com/maps/place/Piura,+Peru/" target="_blank" class="flex items-start space-x-4 p-6 rounded-xl bg-card border border-border hover:shadow-lg hover:scale-105 transform transition-all duration-200 cursor-pointer">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
+                        <i data-lucide="map-pin" class="w-6 h-6 text-primary"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-foreground mb-2">Ubicación</h4>
+                        <p class="text-muted-foreground">Piura-Perú</p>
+                    </div>
+                </a>
+                
+                <a href="https://wa.me/51996331447" target="_blank" class="flex items-start space-x-4 p-6 rounded-xl bg-card border border-border hover:shadow-lg hover:scale-105 transform transition-all duration-200 cursor-pointer">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
+                        <i data-lucide="phone" class="w-6 h-6 text-primary"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-foreground mb-2">WhatsApp</h4>
+                        <p class="text-muted-foreground">+51 996 331 447</p>
+                    </div>
+                </a>
+                
+                <a href="mailto:czfayh@gmail.com" target="_blank" class="flex items-start space-x-4 p-6 rounded-xl bg-card border border-border hover:shadow-lg hover:scale-105 transform transition-all duration-200 cursor-pointer">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
+                        <i data-lucide="mail" class="w-6 h-6 text-primary"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-foreground mb-2">Email</h4>
+                        <p class="text-muted-foreground">czfayh@gmail.com</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-primary-foreground py-16">
+        <div class="container-responsive">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2 lg:col-span-1">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-primary-foreground/20">
+                            <i data-lucide="flask-conical" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xl font-bold">AquaLab Pro</span>
+                    </div>
+                    <p class="text-primary-foreground/80 mb-4">
+                        Líderes en servicios ambientales y análisis de laboratorio. Comprometidos con la excelencia y el cuidado del medio ambiente.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Servicios</h4>
+                    <ul class="space-y-2 text-sm text-primary-foreground/80">
+                        <li><a href="#servicios" class="hover:text-primary-foreground transition-colors">Análisis de Laboratorio</a></li>
+                        <li><a href="#servicios" class="hover:text-primary-foreground transition-colors">Tratamiento de Aguas</a></li>
+                        <li><a href="#servicios" class="hover:text-primary-foreground transition-colors">Monitoreo Ambiental</a></li>
+                        <li><a href="#servicios" class="hover:text-primary-foreground transition-colors">Software Especializado</a></li>
+                        <li><a href="#servicios" class="hover:text-primary-foreground transition-colors">Gestión de Calidad</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contacto</h4>
+                    <ul class="space-y-2 text-sm text-primary-foreground/80">
+                        <li class="flex items-center">
+                            <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
+                            +51 996 331 447
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="mail" class="w-4 h-4 mr-2"></i>
+                            czfayh@gmail.com
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="map-pin" class="w-4 h-4 mr-2"></i>
+                            Piura-Perú
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="flex items-center justify-center w-10 h-10 rounded-lg bg-primary-foreground/20 hover:bg-primary-foreground/30 transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="flex items-center justify-center w-10 h-10 rounded-lg bg-primary-foreground/20 hover:bg-primary-foreground/30 transition-colors">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="flex items-center justify-center w-10 h-10 rounded-lg bg-primary-foreground/20 hover:bg-primary-foreground/30 transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-primary-foreground/20 pt-8 text-center">
+                <p class="text-primary-foreground/80">
+                    &copy; 2025 AquaLab Pro. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
+</body>
+</html> 

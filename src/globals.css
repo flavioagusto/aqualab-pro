@@ -1,0 +1,264 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============== VARIABLES CSS OKLCH ============== */
+@layer base {
+  :root {
+    /* Tema Claro - COLORES VIBRANTES */
+    --background: 0.98 0.02 220;
+    --foreground: 0.08 0.06 270;
+    --card: 1 0 0;
+    --card-foreground: 0.08 0.06 270;
+    --popover: 1 0 0;
+    --popover-foreground: 0.08 0.06 270;
+    --primary: 0.55 0.35 220;
+    --primary-foreground: 0.98 0.02 220;
+    --secondary: 0.85 0.25 280;
+    --secondary-foreground: 0.08 0.06 270;
+    --muted: 0.90 0.10 240;
+    --muted-foreground: 0.35 0.10 240;
+    --accent: 0.75 0.30 160;
+    --accent-foreground: 0.08 0.06 270;
+    --destructive: 0.70 0.45 15;
+    --destructive-foreground: 0.98 0.02 220;
+    --border: 0.82 0.12 240;
+    --input: 0.85 0.15 240;
+    --ring: 0.55 0.35 220;
+    --radius: 0.75rem;
+    
+    /* Colores para Gráficos - NEÓN VIBRANTE */
+    --chart-1: 0.75 0.40 200; /* Cyan eléctrico */
+    --chart-2: 0.80 0.35 160; /* Verde lima brillante */
+    --chart-3: 0.70 0.42 280; /* Púrpura vibrante */
+    --chart-4: 0.65 0.38 320; /* Magenta brillante */
+    --chart-5: 0.78 0.35 40;  /* Naranja neón */
+  }
+
+  .dark {
+    /* Tema Oscuro - NEÓN EN LA NOCHE */
+    --background: 0.05 0.10 220;
+    --foreground: 0.95 0.05 210;
+    --card: 0.08 0.12 220;
+    --card-foreground: 0.95 0.05 210;
+    --popover: 0.08 0.12 220;
+    --popover-foreground: 0.95 0.05 210;
+    --primary: 0.78 0.40 220;
+    --primary-foreground: 0.05 0.10 220;
+    --secondary: 0.20 0.25 280;
+    --secondary-foreground: 0.95 0.05 210;
+    --muted: 0.15 0.15 240;
+    --muted-foreground: 0.80 0.10 210;
+    --accent: 0.25 0.32 160;
+    --accent-foreground: 0.95 0.05 210;
+    --destructive: 0.75 0.50 15;
+    --destructive-foreground: 0.95 0.05 210;
+    --border: 0.25 0.18 240;
+    --input: 0.22 0.20 240;
+    --ring: 0.78 0.40 220;
+    
+    /* Colores para Gráficos - ULTRA NEÓN */
+    --chart-1: 0.85 0.45 200; /* Cyan ultra brillante */
+    --chart-2: 0.88 0.40 160; /* Verde lima eléctrico */
+    --chart-3: 0.80 0.48 280; /* Púrpura neón */
+    --chart-4: 0.75 0.42 320; /* Magenta eléctrico */
+    --chart-5: 0.90 0.38 40;  /* Naranja ultra neón */
+  }
+}
+
+/* ============== ESTILOS BASE ============== */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1 {
+    @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
+  }
+  
+  h2 {
+    @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;
+  }
+  
+  h3 {
+    @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+  }
+  
+  h4 {
+    @apply scroll-m-20 text-xl font-semibold tracking-tight;
+  }
+  
+  p {
+    @apply leading-7;
+  }
+}
+
+/* ============== SCROLLBAR PERSONALIZADA ============== */
+@layer base {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: oklch(var(--muted-foreground) / 0.5);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(var(--border)) transparent;
+  }
+}
+
+/* ============== ANIMACIONES ============== */
+@layer base {
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(180deg);
+    }
+  }
+}
+
+/* ============== TRANSICIONES GLOBALES ============== */
+@layer base {
+  * {
+    @apply transition-colors duration-200;
+  }
+
+  button, 
+  a,
+  input,
+  textarea,
+  select {
+    @apply transition-all duration-200 ease-in-out;
+  }
+}
+
+/* ============== COMPONENTES PERSONALIZADOS ============== */
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .glass-effect {
+    background: oklch(var(--background) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid oklch(var(--border) / 0.5);
+    box-shadow: 0 0 20px oklch(var(--primary) / 0.1);
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 20px oklch(var(--primary) / 0.3),
+                0 0 40px oklch(var(--primary) / 0.2),
+                0 0 60px oklch(var(--primary) / 0.1);
+  }
+
+  .vibrant-border {
+    border: 2px solid;
+    border-image: linear-gradient(45deg, 
+      oklch(var(--chart-1)), 
+      oklch(var(--chart-2)), 
+      oklch(var(--chart-3)), 
+      oklch(var(--chart-4)), 
+      oklch(var(--chart-5))
+    ) 1;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary:hover {
+    background: oklch(var(--primary) / 0.9);
+    @apply shadow-xl;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg border border-input bg-transparent px-6 py-3 text-sm font-medium shadow-sm transition-all hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .input-field {
+    @apply flex h-12 w-full rounded-lg border border-input bg-background px-4 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .service-card {
+    @apply rounded-xl border bg-card p-6 text-card-foreground shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .floating-element {
+    background: oklch(var(--primary) / 0.2);
+    backdrop-filter: blur(4px);
+    border: 1px solid oklch(var(--border) / 0.3);
+    @apply absolute rounded-full flex items-center justify-center text-primary;
+  }
+}
+
+/* ============== EFECTOS ESPECIALES ============== */
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, oklch(var(--primary)), oklch(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+  }
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
+
+/* ============== RESPONSIVE UTILITIES ============== */
+@layer utilities {
+  .container-responsive {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+
+  .grid-responsive {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+} 

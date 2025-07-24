@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://flavioagusto.github.io/aqualab-pro/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1 

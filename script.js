@@ -28,14 +28,42 @@ class ThemeManager {
         }
         
         localStorage.setItem('theme', theme);
+        
+        // Aplicar inversión de colores al logo Clicons con un pequeño delay para asegurar que el DOM esté listo
+        setTimeout(() => {
+            const cliconsLogo = document.getElementById('clicons-logo');
+            if (cliconsLogo) {
+                if (theme === 'dark') {
+                    cliconsLogo.style.filter = 'invert(1)';
+                    console.log('✅ Logo invertido para modo oscuro');
+                } else {
+                    cliconsLogo.style.filter = 'invert(0)';
+                    console.log('✅ Logo normal para modo claro');
+                }
+            } else {
+                console.warn('⚠️ Logo Clicons no encontrado');
+            }
+        }, 50);
     }
 
     toggle() {
         const newTheme = this.theme === 'light' ? 'dark' : 'light';
         this.applyTheme(newTheme);
         this.updateToggleIcon();
+        this.updateLogoFilter(newTheme);
         
         console.log('🌓 Theme changed to:', newTheme);
+    }
+    
+    updateLogoFilter(theme) {
+        const cliconsLogo = document.getElementById('clicons-logo');
+        if (cliconsLogo) {
+            if (theme === 'dark') {
+                cliconsLogo.style.filter = 'invert(1)';
+            } else {
+                cliconsLogo.style.filter = 'invert(0)';
+            }
+        }
     }
 
     setupToggle() {

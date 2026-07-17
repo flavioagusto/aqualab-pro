@@ -60,7 +60,7 @@ Sitio web profesional para AquaLab Pro, especialistas en análisis fisicoquímic
 
 ## 📄 Licencia
 
-© 2025 AquaLab Pro. Todos los derechos reservados.
+© 2026 AquaLab Pro. Todos los derechos reservados.
 
 ---
 

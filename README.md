@@ -34,7 +34,7 @@ Sitio web profesional para AquaLab Pro, especialistas en análisis fisicoquímic
 
 - **📍 Ubicación:** Piura, Perú
 - **📱 WhatsApp:** +51 996 331 447
-- **✉️ Email:** czfayh@gmail.com
+- **✉️ Email:** contacto@aqualabpro.store
 
 ## 🚀 Cómo Usar
 

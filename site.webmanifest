@@ -1,7 +1,7 @@
 {
     "name": "AquaLab Pro - Laboratorio Químico Piura",
     "short_name": "AquaLab Pro",
-    "description": "Laboratorio certificado ISO 17025 en Piura. Análisis fisicoquímicos de agua, ensayos de suelos, monitoreo ambiental OEFA/ANA.",
+    "description": "Laboratorio acreditado ISO/IEC 17025 ante INACAL en Piura. Análisis fisicoquímicos de agua, ensayos de suelos, monitoreo ambiental OEFA/ANA.",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",

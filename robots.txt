@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://flavioagusto.github.io/aqualab-pro/sitemap.xml
+Sitemap: https://www.aqualabpro.store/sitemap.xml
 
 # Permitir indexación de todas las páginas principales
 Allow: /index.html

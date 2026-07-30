@@ -4,4 +4,52 @@
     <loc>https://www.aqualabpro.store/</loc>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://www.aqualabpro.store/servicios/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.aqualabpro.store/servicios/analisis-de-agua-potable-piura/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aqualabpro.store/servicios/analisis-de-agua-de-pozo-piura/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aqualabpro.store/servicios/analisis-de-agua-residual-vma-piura/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aqualabpro.store/servicios/analisis-de-suelos-agricolas-piura/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aqualabpro.store/servicios/sales-solubles-en-suelos-piura/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aqualabpro.store/servicios/analisis-de-minerales-piura/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aqualabpro.store/servicios/monitoreo-ambiental-piura/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aqualabpro.store/servicios/plantas-de-tratamiento-de-agua-potable/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aqualabpro.store/servicios/muestreo-y-cadena-de-custodia-piura/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aqualabpro.store/nosotros/</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.aqualabpro.store/contacto/</loc>
+    <priority>0.6</priority>
+  </url>
 </urlset>
